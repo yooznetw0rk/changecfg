@@ -2,7 +2,7 @@ const inputElem = document.querySelector('#input');
 const btnElem = document.querySelector('#getCfg');
 
 let addreses = [
-    {isp: 'Irancell', ip: '45.85.119.44'},
+    {isp: 'Irancell', ip: '45.85.119.65'},
     {isp: 'Hamrah Aval', ip: '45.85.119.44'},
     {isp: 'ADSL', ip: '45.85.118.88'}
 ]
