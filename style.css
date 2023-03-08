@@ -1,0 +1,205 @@
+:root {
+    --yellow: #b9965b;
+    --blue: #23264f;
+    --red: #cd0e2a;
+    font-size: 14px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: vazirmatn, system-ui, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+    background-color: transparent;
+    background-image: none;
+    border: inherit;
+}
+
+button,
+[role="button"] {
+    cursor: pointer;
+}
+
+@media (min-width: 640px) {
+    :root {
+        font-size: 14px;
+    }
+
+}
+
+@media (min-width: 1024px) {
+    :root {
+        font-size: 16px;
+    }
+
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+@media (min-width: 350px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1536px;
+    }
+}
+
+@font-face {
+    font-family: 'vazirmatn';
+    src: url('../assets/fonts/vazirmatn.woff2') format('woff2 supports variations'),
+        url('../assets/fonts/vazirmatn.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(45deg, #d8c8ab, #cbccdd);
+}
+
+nav {
+    height: 3.75rem;
+    padding: .5rem 2rem;
+    display: flex;
+}
+
+nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav .container img {
+    width: 2.5rem;
+}
+
+nav p {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-right: .5rem;
+    color: var(--blue);
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+main textarea {
+    width: 100%;
+    max-width: 600px;
+    resize: none;
+    direction: ltr;
+    background: #e0e0e0a8;
+    padding: 1rem;
+    text-align: center;
+    border: none;
+    border-radius: 1rem;
+    transition: box-shadow .5s ease-in-out;
+    font-family: monospace;
+}
+
+main textarea:focus {
+    outline: inherit;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: box-shadow .5s ease-in-out;
+}
+
+main textarea::placeholder {
+    font-family: vazirmatn, system-ui, sans-serif;
+}
+
+.btn-holder {
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+}
+
+.btn-holder button {
+    background: var(--blue);
+    flex-grow: 1;
+    color: #cbccdd;
+    border-radius: .5rem;
+    padding: .5em;
+    transition: background .3s ease-in-out, color .3s ease-in-out;
+}
+
+.btn-holder button:hover {
+    background: var(--yellow);
+    color: var(--blue);
+    transition: background .3s ease-in-out, color .3s ease-in-out;
+}
+
+.info-holder {
+    width: 100%;
+    max-width: 600px;
+    text-align: justify;
+    margin-bottom: 1rem;
+    background: #e0e0e0a8;
+    padding: 1rem;
+    border-radius: 1rem;
+}
