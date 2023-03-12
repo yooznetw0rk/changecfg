@@ -2,51 +2,54 @@ const inputElem = document.querySelector('#input');
 const btnElem = document.querySelector('#getCfg');
 
 let addreses = [
-    {isp: 'Irancell', ip: '45.85.119.65'},
-    {isp: 'Hamrah Aval', ip: '45.85.119.44'},
-    {isp: 'ADSL', ip: '45.85.118.88'}
+    { isp: 'Irancell', ip: '45.85.119.44' },
+    { isp: 'Hamrah Aval', ip: '45.85.119.44' },
+    { isp: 'ADSL', ip: '45.85.118.88' }
 ]
 
 // Random String generator
-let makeid = (length)=> {
+let makeid = (length) => {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const charactersLength = characters.length;
     let counter = 0;
     while (counter < length) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      counter += 1;
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
     }
     return result;
 }
 
 let fixedCfg = [];
-
-btnElem.addEventListener('click', ()=> {
+btnElem.addEventListener('click', () => {
     let userCfg = inputElem.value;
+    let hostSeprator = (host)=> {
+        let hostArr = host.split('.');
+        hostArr[0] = makeid(8);
+        return hostArr.join('.');
+    }
     try {
         let cfgObj = JSON.parse(atob(userCfg.trim().substring(8)));
         addreses.forEach(adds => {
             let tempObj = { ...cfgObj };
-            tempObj.ps = `YoozNetwork [${adds.isp}]`;
+            tempObj.ps = `${tempObj.ps} [${adds.isp}]`;
             tempObj.add = adds.ip;
-            tempObj.host = `${makeid(8)}.nazsuk.ga`;
+            tempObj.host = hostSeprator(tempObj.host);
             tempObj.sni = '';
             fixedCfg.push(tempObj);
             tempObj = '';
-            console.log(fixedCfg);
         });
-    
+        console.log(fixedCfg);
         let fixedCfgText = '';
         fixedCfg.forEach(cfg => {
             fixedCfgText += `vmess://${btoa(JSON.stringify(cfg))}\n\n`;
         });
-        navigator.clipboard.writeText(fixedCfgText).then(()=> {
+        navigator.clipboard.writeText(fixedCfgText).then(() => {
             alert("کانفیگ ها با موفقیت در کلیپ بورد ذخیره شدند.")
         })
-    
+
         fixedCfg = [];
-        fixedCfgText = '';    
+        fixedCfgText = '';
     } catch (error) {
         console.log(error);
         alert("عملیات موفق نبود، به نظر میرسد لینکی که وارد کرده اید ناقص یا اشتباه است.")
