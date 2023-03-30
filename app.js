@@ -3,7 +3,7 @@ const btnElem = document.querySelector('#getCfg');
 
 let addreses = [
     { isp: 'Irancell', ip: 'irc.nazsuk.ga' },
-    { isp: '', ip: 'mci.nazsuk.ga' },
+    { isp: 'Hamrah', ip: 'mci.nazsuk.ga' },
     { isp: 'ADSL', ip: 'adsl.nazsuk.ga' }
 ]
 
@@ -32,7 +32,7 @@ btnElem.addEventListener('click', () => {
         let cfgObj = JSON.parse(atob(userCfg.trim().substring(8)));
         addreses.forEach(adds => {
             let tempObj = { ...cfgObj };
-            tempObj.ps = `${tempObj.ps} [${adds.isp}]`;
+            tempObj.ps = `${'Persian Rayan'} [${adds.isp}]`;
             tempObj.add = adds.ip;
             tempObj.host = hostSeprator(tempObj.host);
             tempObj.sni = '';
