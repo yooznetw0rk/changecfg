@@ -2,9 +2,9 @@ const inputElem = document.querySelector('#input');
 const btnElem = document.querySelector('#getCfg');
 
 let addreses = [
-    { isp: 'Irancell', ip: 'irc.nazsuk.ga' },
-    { isp: 'Hamrah', ip: 'mci.nazsuk.ga' },
-    { isp: 'ADSL', ip: 'adsl.nazsuk.ga' }
+    { isp: 'Irancell', ip: 'irc.yooznetwork.cloud' },
+    { isp: 'Hamrah', ip: 'mci.yooznetwork.cloud' },
+    { isp: 'ADSL', ip: 'adsl.yooznetwork.cloud' }
 ]
 
 // Random String generator
