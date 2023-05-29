@@ -46,12 +46,11 @@ const getConfigObj = () => {
         userConfig = JSON.parse(atob(userConfigLink.slice(8)));
         initConfig();
     } catch (err) {
-        console.log('عملیات موفق نبود، به نظر میرسد لینکی که وارد کرده اید ناقص یا اشتباه است.');
     }
-
 }
 
 const checkGRPCConfig = () => {
+    
     let isSNIBlack = false;
     if (userConfig.sni) {
         for (let regex of blackList) {
@@ -69,6 +68,7 @@ const checkWSConfig = () => {
             isSNIBlack = regex.test(userConfig.sni);
             if (isSNIBlack) break
         }
+
         if (isSNIBlack) {
              alert('کانفیگ شما دچار مشکل شده. لطفا سریعا به پشتیبانی مراجعه کنید') 
         } else {
@@ -92,7 +92,6 @@ const fixConfig = () => {
         tempObj.ps = `YoozNetwork [${adds.isp}]`
         tempObj.path = ''
         tempObj.sni = `${makeid(8)}.${whiteList[random(0, whiteList.length - 1)]}`
-        console.log(tempObj.sni);
         fixedConfigs.push(tempObj)
         tempObj = ''
     });
@@ -101,11 +100,9 @@ const fixConfig = () => {
     fixedConfigs.forEach(cfg => {
         fixedConfigsTxt += `vmess://${btoa(JSON.stringify(cfg))}\n\n`
     })
-    console.log(fixedConfigsTxt);
-
-    navigator.clipboard.writeText(fixedCfgText).then(() => {
-        alert("کانفیگ ها با موفقیت در کلیپ بورد ذخیره شدند.")
-    })
+    
+    window.navigator.clipboard.writeText(fixedConfigsTxt)
+    .then(alert("کانفیگ با موفقیت بروزرسانی و کپی شد."))
 }
 
 const initConfig = () => {
@@ -114,5 +111,14 @@ const initConfig = () => {
             : '';
 }
 // cfg logic
+
+// DOM
+const renderBtn = (msg, color, link) => {
+    const container = document.querySelector('#button-area');
+    container.insertAdjacentElement('beforeend', `
+        <button class="btn-primary bg-${color}-400">${msg}</button>
+    `)
+}
+// DOM
 
 btnElem.addEventListener('click', getConfigObj);
